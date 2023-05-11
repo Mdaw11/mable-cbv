@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/project.css' %}" />
+{% endblock htmlhead %}
+{% block content %}
+<main id="content">
+  {% if user.account_type == 'admin' or user.account_type == 'project_manager' %}
+  <div class="popup-link">
+    <a href="#popup1">Create New Ticket</a>
+  </div>
+  {% endif %}
+  <div id="popup1" class="popup-container">
+    <div class="popup-content">
+      <a href="#" class="close">&times;</a>
+      <h3></h3>
+      <div class="main-column">
+        <form id="ticket-form" action="{% url 'project' pk=project_id.id %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-project">
+            <span style="white-space: pre-line"><label for="ticket_name">Project</label>
+              {{form.project}}</span>
+          </div>
+          
+          <div class="form-status">
+            <span class="style" style="white-space: pre-line"><label for="ticket_status">Ticket Status</label>
+              {{form.status}}</span>
+          </div>
+          <div class="form-priority">
+            <span style="white-space: pre-line"><label for="ticket_priority">Ticket Priorities</label>
+              {{form.priority}}</span>
+          </div>
+          <div class="form-type">
+            <span style="white-space: pre-line"><label for="ticket_type">Ticket Type</label>
+              {{form.type}}</span>
+          </div>
+          <div class="form-assignees">
+            <span style="white-space: pre-line">
+              <label for="ticket_assignee">Assigned To</label>
+                <select name="assignees" multiple>
+                  {% for user in users %}
+                  {% if user.id in assignee_ids %}
+                  <option value="{{ user.id }}" selected>{{ user.username }}</option>
+                    {% else %}
+                  <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+            </span>
+          </div>
+          <div class="form-name">
+            <span style="white-space: pre-line"><label for="ticket_name">Ticket Name</label>
+              {{form.name}}</span>
+          </div>
+          <div class="form-description">
+            <span style="white-space: pre-line"><label for="ticket_description">Ticket Description</label>
+              {{form.description}}</span>
+          </div>
+          <div class="ticket-submit">
+            <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+            <button class="btn btn--main" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="project-detail">
+    <div class="project-detail-data">
+      <h3 id="project-head">Project Detail</h3>
+      <div class="menu">
+        <a href="{% url 'update-project' project_id.id %}" class="button primary edit">Edit</a>
+        <ul class="menu-link">
+        </ul>
+      </div>
+      <div class='parent'>
+        <div class='child'>
+          <h4>Project Name</h4>
+          <p>{{project_id.name}}</p>
+        </div>
+        <div class='child-description'>
+          <h4>Project Description</h4>
+          <p>{{project_id.description}}</p>
+        </div>
+      </div>
+      <div class="parent2">
+        <div class='child-personnel'>
+          <h4>Assigned Personnel</h4>
+          <div class="personnel-search">
+            <p>Show # Entries</p>
+            <form action="">
+              <input type="text" name="search" class="search" placeholder="Search">
+            </form>
+          </div>
+          <table>
+            <thead>
+              <tr>
+              <th>User Name</th>
+              <th>Email</th>
+              <th></th>
+              <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tbody>
+                {% for user in user_page_obj %}
+                  <tr>
+                  <td><a href="">{{user.username}}</a></td>
+                  <td>{{user.email}}</td>
+                  <td></td>
+                  <td>{{user.get_account_type_display}}</td>
+                  {% if not forloop.last %} {% endif %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </tbody>
+            </table>
+          <div class="personnel-pagination">
+            <p>Showing {{ user_page_obj.start_index }} to {{ user_page_obj.end_index }} of {{ user_page_obj.paginator.count }} entries</p>
+            <div class="user-pagination-links">
+              {% if user_page_obj.has_previous %}
+                  <a href="?user_page={{ user_page_obj.previous_page_number }}">&laquo;</a>
+              {% else %}
+              {% endif %}
+      
+              {% for page in user_page_obj.paginator.page_range %}
+                  {% if user_page_obj.number == page %}
+                      <span class="current-page">{{ page }}</span>
+                  {% else %}
+                      <a href="?user_page={{ page }}">{{ page }}</a>
+                  {% endif %}
+              {% endfor %}
+      
+              {% if user_page_obj.has_next %}
+                  <a href="?user_page={{ user_page_obj.next_page_number }}">&raquo;</a>
+              {% else %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class='child-tickets'>
+          <h4>Tickets for this Project</h4>
+          <div class="ticket-search">
+            <p>Show # Entries</p>
+            <form action="">
+              <input type="text" name="search" class="search" placeholder="Search">
+            </form>
+          </div>
+          <table>
+            <thead>
+              <tr>
+              <th>Name</th>
+              <th>Assignee</th>
+              <th>Priority</th>
+              <th>Created</th>
+              <th>Updated</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for ticket in page_obj %}
+                <tr>
+                  <td><a href="{% url 'ticket' ticket.id %}">{{ ticket.name }}</a></td>
+                  <td>
+                    {% for user in ticket.assignee.all %}
+                      {{ user.username }}
+                    {% empty %}
+                      none
+                    {% endfor %}
+                  </td>
+                  <td class="{{ticket.priority|lower}}">{{ ticket.priority }}</td>
+                  <td>{{ ticket.created }}</td>
+                  <td>{{ ticket.updated }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="ticket-pagination">
+            <p>Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }} entries</p>
+            <div class="ticket-pagination-links">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+            {% else %}
+              
+            {% endif %}
+
+            {% for page in page_obj.paginator.page_range %}
+              {% if page_obj.number == page %}
+                <a href="#" class="active">{{ page }}</a>
+              {% else %}
+                <a href="?page={{ page }}">{{ page }}</a>
+              {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+            {% else %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+  // Get the form and the submit button
+  const form = document.querySelector('#ticket-form');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  
+  // Add event listener to submit button
+  submitBtn.addEventListener('click', (event) => {
+    // Prevent default form submission behavior
+    event.preventDefault();
+
+    // Get the CKEditor instance and update the hidden textarea field
+    const editor = CKEDITOR.instances.id_description;
+    editor.updateElement();
+  
+    // Send an AJAX request to submit the form data
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Update the UI as needed
+        alert('Ticket created successfully!');
+        location.reload();
+      } else {
+        // Handle errors
+        alert('Error creating ticket.');
+        console.log(data.errors);
+      }
+    })
+    .catch(error => {
+      alert('An error occurred while submitting the form.');
+      console.log(error);
+    });
+  });
+</script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+{% endblock content %}

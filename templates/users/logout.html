@@ -1,0 +1,15 @@
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+{% endblock htmlhead %}
+<div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>You have been logged out</header>
+      <div class="signup">
+        <a href="{% url 'login' %}">Click here to log in again.</a>
+        <a href="{% url 'register' %}">Or Sign up for a New User</a>
+      </div>
+    </div>
+</div>
+

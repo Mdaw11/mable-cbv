@@ -1,0 +1,132 @@
+/* DASHBOARD */
+
+.row {
+	display: flex;
+}
+  
+  /* Create two equal columns that sits next to each other */
+.column {
+	flex: 50%;
+	padding: 10px;
+	height: 600px; /* Should be removed. Only for demonstration */
+}
+
+.priority {
+  display: flex;
+  grid-gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+
+.priority .priority-box {
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 300px;
+  margin-top: 20px;
+  padding: 20px;
+  height: 525px;
+  background: rgb(174, 174, 174);
+  border-radius: 3px;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+}
+
+.priority .priority-box #priority-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px 20px;
+  width: 100%;
+  background: white;
+  font-size: 30px;
+}
+
+.type {
+  display: flex;
+  grid-gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+
+.type .type-box {
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 400px;
+  margin-top: 20px;
+  padding: 20px;
+  height: 525px;
+  background: rgb(174, 174, 174);
+  border-radius: 3px;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+}
+
+.type .type-box #type-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px 20px;
+  width: 100%;
+  background: white;
+  font-size: 30px;
+}
+
+.status {
+  display: flex;
+  grid-gap: 20px;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+
+.status .status-box {
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 400px;
+  margin-top: 20px;
+  padding: 20px;
+  height: 525px;
+  background: rgb(174, 174, 174);
+  border-radius: 3px;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+}
+
+.status .status-box #status-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px 20px;
+  width: 100%;
+  background: white;
+  font-size: 30px;
+}
+
+.user-ticket {
+  display: flex;
+  grid-gap: 20px;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+
+.user-ticket .user-ticket-box {
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 400px;
+  margin-top: 20px;
+  padding: 20px;
+  height: 525px;
+  background: rgb(174, 174, 174);
+  border-radius: 3px;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+}
+
+.user-ticket .user-ticket-box #user-ticket-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px 20px;
+  width: 100%;
+  background: white;
+  font-size: 30px;
+}
+
+/* DASHBOARD END */

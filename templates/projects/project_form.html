@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/project.css' %}" />
+{% endblock htmlhead %}
+{% block content %}
+<style>
+
+</style>
+<section id="content">
+    <main>
+      <div class="data">
+        <div class="content-data">
+          <!-- second example -->
+          <div class="column-layout">
+            <div class="main-column">
+              <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form__group">
+                  <span style="white-space: pre-line"><label for="project_name">Project Name</label>
+                    {{form.name}}</span>
+                </div>
+                <div class="form__group">
+                  <span class="style" style="white-space: pre-line"><label for="project_status">Project Status</label>
+                    {{form.status}}</span>
+                </div>
+                <div class="form__group">
+                  <span style="white-space: pre-line"><label for="project_description">Project Description</label>
+                    {{form.description}}</span>
+                </div>
+                <div class="project-submit">
+                  <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+                  <button class="btn btn--main" type="submit">Submit</button>
+                </div>
+              </form>
+              <br><br><br>
+            </div>
+            <a href="{% url 'delete-project' project.id %}" class="button primary delete">Delete</a>
+
+          </div>
+        </div>
+      </div>
+    <main>
+  </section>
+{% endblock %}

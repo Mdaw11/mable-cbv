@@ -1,0 +1,23 @@
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+{% endblock htmlhead %}
+
+<div class="container">
+    <input type="checkbox" id="check">
+    <div class="form-control form">
+      <header>Register</header>
+      <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <a href="#">Forgot password?</a>
+        <input type="submit" class="button" value="Register">
+        
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+         <a href="{% url 'login' %}">Login</a>
+        </span>
+      </div>
+    </div>
+</div>

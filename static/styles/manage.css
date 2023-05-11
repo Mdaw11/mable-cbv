@@ -1,0 +1,241 @@
+/* MANAGE USERS */
+.manage-border {
+	border-bottom: 1px solid #d6d5d5;
+	width: 450px;
+}
+
+.manage-border #assignee {
+	width: 360px;
+	padding: 5px 10px;
+	margin-top: 15px;
+	margin-bottom: 30px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.manage-border #user {
+	width: 360px;
+	padding: 5px 10px;
+	margin-top: 15px;
+	margin-bottom: 30px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+
+.assign #ticket {
+	position: relative;
+	width: 360px;
+	padding: 5px 10px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.assign p {
+	position: relative;
+	top: 60px;
+	font-weight: 10px;
+}
+
+.assign .btn-assign {
+	background: rgb(0, 183, 255);
+	position: relative;
+	top: 100px;
+	right: 365px;
+	border: none;
+	padding: 10px 20px;
+	width: 360px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.title2 {
+	position: relative;
+	top: 20vh;
+}
+
+.select {
+	position: relative;
+	top: 20vh;
+}
+.manage-border2 {
+	border-bottom: 1px solid #d6d5d5;
+	width: 450px;
+}
+
+.manage-border2 #assignee2 {
+	width: 360px;
+	padding: 5px 10px;
+	margin-top: 200px;
+	margin-bottom: 30px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.assign2 #ticket2 {
+	position: relative;
+	width: 360px;
+	padding: 5px 10px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.assign2 p {
+	position: relative;
+	top: 60px;
+	font-weight: 10px;
+}
+
+.assign2 .btn-assign {
+	background: rgb(0, 183, 255);
+	position: relative;
+	top: 100px;
+	right: 365px;
+	border: none;
+	padding: 10px 20px;
+	width: 360px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+
+.assign3 #account_type {
+	position: relative;
+	width: 360px;
+	padding: 5px 10px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.assign3 p {
+	position: relative;
+	top: 60px;
+	font-weight: 10px;
+}
+
+.assign3 .btn-assign {
+	background: rgb(0, 183, 255);
+	position: relative;
+	top: 100px;
+	right: 365px;
+	border: none;
+	padding: 10px 20px;
+	width: 360px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+
+
+main .all-users-card {
+	display: flex;
+	position: absolute;
+	grid-gap: 20px;
+	bottom: 35vh;
+	left: 80vh;
+	width: 300px;
+	padding: 0 10px;
+}
+
+main .all-users-card .all-users-detail {
+	flex-grow: 1;
+	flex-basis: 400px;
+	margin-top: 150px;
+	padding: 20px;
+	height: 100%;
+	background: var(--light);
+	border-radius: 3px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .all-users-detail #all-users {
+	display: flex;
+	position: relative;
+	top: -55px;
+	width: 627px;
+	padding: 20px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	background-color: orange;
+}
+
+main .all-users-detail .history-search p {
+	position: relative;
+	float: left;
+	color: rgb(144, 144, 144);
+	bottom: 40px;
+}
+
+main .all-users-detail .history-search .search-input {
+	position: relative;
+	float: right;
+	padding: 3px;
+	bottom: 40px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .all-users-detail table {
+	position: relative;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 99%;
+	top: -20px;
+}
+
+main .all-users-detail tr {
+	cursor: pointer;
+}
+
+main .all-users-detail th {
+	padding: 6px 12px;
+	text-align: left;
+	border-bottom: 1px solid #000000;
+}
+
+main .all-users-detail td {
+	padding: 6px 12px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+/* main .all-users-detail .history-pagination {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+} */
+
+
+main .all-users-detail .history-pagination p {
+	display: inline-block;
+	position: relative;
+	/* margin: 30px 25px; */
+	text-align: left;
+	bottom: 0;
+	right: 0; 
+}
+
+main .all-users-detail .history-pagination .history-links {
+	color: black;
+	display: inline;
+	float: right;
+	padding: 4px 8px;
+	text-decoration: none;
+}
+
+
+
+/* MANAGE USERS END */

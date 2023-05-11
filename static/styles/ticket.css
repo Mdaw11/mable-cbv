@@ -1,0 +1,987 @@
+/* TICKET FORM */
+.popup-container {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.3);
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 17, 17, 0.61);
+    display: flex;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+.popup-content p{
+    font-size: 17px;
+    padding: 10px;
+    line-height: 20px;
+}
+.popup-content a.close{
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-decoration:none;
+}
+
+.popup-content a.close:hover{
+	color:#333;
+}
+
+.popup-content span:hover,
+.popup-content span:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-container:target{
+	visibility: visible;
+	opacity: 1;
+	transform: scale(1);
+}
+
+.popup-container h3{
+  	margin: 10px;
+}
+
+.primary {
+	line-height: 40px;
+	transition: ease-in-out .2s;
+	padding: 4px 16px;
+}
+  
+.primary:hover, .condensed:hover, .touch:hover {
+	transform:scale(1.02);
+	box-shadow:2px 2px 5px rgba(0,0,0,0.20), inset 0 0 0 99999px rgba(0,0,0,0.2);
+}
+
+
+/* ========= TICKET FORM ========== */
+
+/* TICKET HOME */
+
+main .ticket-home-card {
+	display: relative;
+	top: 20px;
+	grid-gap: 20px;
+	margin-top: 20px;
+	flex-wrap: wrap;
+	padding: 0 10px;
+	
+}
+
+main .ticket-home-card .ticket-home-detail {
+	flex-grow: 1;
+	position: relative;
+	top: 40px;
+	padding: 20px;
+	height: 100%;
+	width: 100%;
+	background: var(--light);
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .ticket-home-detail .ticket-home-head {
+	display: flex;
+  	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	vertical-align: middle;
+	width: 100%;
+	top: -35px;
+	padding: 20px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	background-color: orange;
+}
+
+
+/* Dropdown styling */
+
+.ticket-form {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	right: 20px;
+}
+
+.ticket-form label {
+    /* margin-right: 10px; */
+	position: relative;
+	bottom: 3px;
+    white-space: nowrap;
+}
+
+.ticket-form select {
+	position: relative;
+	bottom: 3px;
+    margin-right: 100px;
+}
+
+.ticket-form button {
+	position: relative;
+	bottom: 3px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	padding: 6px 12px;
+	color: #555;
+}
+
+
+
+label[for='id_assignee'] {
+    /* Style for assignee label */
+    font-weight: bold;
+}
+
+label[for='id_status'] {
+    /* Style for status label */
+    font-weight: bold;
+}
+
+label[for='id_priority'] {
+    /* Style for priority label */
+    font-weight: bold;
+}
+
+label[for='id_type'] {
+    /* Style for type label */
+    font-weight: bold;
+}
+
+.assignee-dropdown {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+.status-dropdown {
+    /* Add your styles here */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+.priority-dropdown {
+    /* Add your styles here */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+.type-dropdown {
+    /* Add your styles here */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Styling for the dropdown menus */
+select {
+	/* width: 200px; */
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: #f1f1f1;
+	font-size: 16px;
+	transition: all 0.3s ease;
+}
+  
+  /* Styling for when the dropdown is hovered over */
+select:hover {
+	background-color: #ddd;
+}
+  
+  /* Styling for when the dropdown is clicked */
+select:focus {
+	outline: none;
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	background-color: #fff;
+}
+  
+  /* Styling for the dropdown options */
+option {
+	font-size: 16px;
+}
+
+/* Dropdown styling end */
+
+
+main .ticket-home-detail .ticket-home-search {
+	display: flex;
+	position: relative;
+	top: -20px;
+	justify-content: space-between;
+	width: 100%;
+}
+
+main .ticket-home-detail .ticket-home-search p {
+	position: relative;
+	top: 10px;
+	color: rgb(144, 144, 144);
+	
+}
+
+main .ticket-home-detail .ticket-home-search .search-input {
+	position: relative;
+	top: 4px;
+	padding: 5px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+
+
+main .ticket-home-detail table {
+	position: relative;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 99%;
+	top: -10px;
+	/* margin-top: 9px; */
+}
+
+main .ticket-home-detail tr {
+	cursor: pointer;
+}
+
+main .ticket-home-detail th {
+	color: rgb(28, 134, 255);
+	padding: 20px;
+	text-align: left;
+	border-bottom: 1px solid #000000;
+}
+
+main .ticket-home-detail td {
+	padding: 20px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+main .ticket-home-detail td.open {
+	color: rgb(3, 173, 3);
+}
+
+main .ticket-home-detail td.closed {
+	color: red;
+}
+
+.open {
+	color: rgb(3, 173, 3);
+}
+
+.closed {
+	color: red;
+}
+
+main .ticket-home-card .ticket-home-detail table tbody img {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+
+main .ticket-home-detail .ticket-home-pagination p {
+	display: inline-block;
+	position: relative;
+	/* justify-content: space-between; */
+	margin-top: 20px;
+	text-align: left;
+	bottom: 0;
+	right: 0; 
+}
+
+main .ticket-home-detail .ticket-home-pagination .messages-links {
+	color: black;
+	display: inline;
+	float: right;
+	margin-top: 20px;
+	/* padding: 4px 8px; */
+	text-decoration: none;
+}
+
+.misc {
+	color: rgb(0, 174, 187);
+}
+
+.bug {
+	color: rgb(224, 69, 22);
+}
+
+.help-needed {
+	color: rgb(252, 206, 3);
+}
+
+.concern {
+	color: rgb(152, 179, 0);
+}
+
+.question {
+	color: rgb(172, 20, 172);
+}
+
+.none {
+    color: rgb(148, 148, 148);
+}
+
+.low {
+	color: green;
+}
+
+.medium {
+	color: orange;
+}
+
+.high {
+	color: red;
+}
+/* TICKET HOME END */
+
+
+
+/* TICKET DETAIL */
+
+.row {
+	display: flex;
+	padding: 20px;
+}
+  
+  /* Create two equal columns that sits next to each other */
+.column {
+	flex: 100%;
+	width: 100%;
+	padding: 10px;
+	height: 625px; /* Should be removed. Only for demonstration */
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	border: 1px solid #dbdbdb;
+	/* border-bottom: 1px solid #dbdbdb; */
+}
+
+main .ticket-card {
+	display: flex;
+	width: 100%;
+	margin-right: 450px;
+	
+	/* grid-gap: 20px; */
+	/* margin-top: 20px; */
+	/* flex-wrap: wrap; */
+	height: 100%;
+	padding: 10px;
+	
+}
+
+main .ticket-card .ticket-detail {
+	flex-grow: 1;
+	flex-basis: 400px;
+	margin-top: 20px;
+	padding: 20px;
+	/* height: 100%; */
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .ticket-detail #ticket-head {
+	display: flex;
+	position: relative;
+	width: 100%;
+	padding: 20px;
+	bottom: 45px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	background-color: orange;
+}
+
+main .ticket-detail .menu {
+	position: relative;
+	display: flex;
+	justify-content: right;
+	bottom: 85px;
+	right: 10px;
+	align-items: center;
+}
+
+main .ticket-detail .menu .icon {
+	cursor: pointer;
+}
+
+main .ticket-detail .menu-link {
+	position: absolute;
+	top: calc(100% + 10px);
+	right: 0;
+	width: 140px;
+	background: var(--light);
+	border-radius: 10px;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+	padding: 10px 0;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+	transition: all .3s ease;
+}
+
+main .ticket-detail .menu-link.show {
+	top: 100%;
+	opacity: 1;
+	pointer-events: visible;
+}
+
+main .ticket-detail .menu-link a {
+	display: block;
+	padding: 6px 16px;
+	font-size: 14px;
+	color: var(--dark);
+	transition: all .3s ease;
+}
+
+main .ticket-detail .menu-link a:hover {
+	background: var(--grey);
+}
+
+/* TICKET HEAD END */
+
+.ticket-row {
+	display: flex;
+	position: relative;
+	height: 100px;
+	top: -30px;
+}
+  
+  /* Create two equal columns that sits next to each other */
+.ticket-column {
+	flex: 50%;
+	height: 100%;
+	/* margin-top: 30px; */
+	padding: 10px;
+	border-bottom: 1px solid #dbdbdb;
+	overflow: auto;
+}
+
+.ticket-column h4 {
+	position: relative;
+	padding-bottom: 10px;
+	/* top: -20px; */
+}
+
+.ticket-column p {
+	position: relative;
+	/* top: -15px; */
+	left: 10px;
+}
+/* TICKET DETAIL END */
+
+
+/* COMMENT DETAIL */
+
+.column .comment-form form {
+	display: flex;
+	float: right;
+	margin: 20px;
+}
+
+.column .comment-form {
+	display: block;
+}
+
+.column .comment-form .search {
+	width: 500px;
+	height: 20px;
+}
+
+.column .comment-form .search input {
+	width: 100%;
+	margin-right: 20px;
+	padding: 3px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.column .comment-form button {
+	text-align: right;
+	padding: 5px 10px;
+	margin-left: 20px;
+	background-color: rgb(0, 162, 255);
+	color: white;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .comment-card {
+	display: relative;
+	top: 20px;
+	grid-gap: 20px;
+	margin-top: 20px;
+	flex-wrap: wrap;
+	padding: 0 10px;
+	
+}
+
+main .comment-card .comment-detail {
+	flex-grow: 1;
+	position: relative;
+	top: 80px;
+	padding: 20px;
+	height: 100%;
+	width: 100%;
+	background: var(--light);
+	border-radius: 3px;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .comment-detail #comment-head {
+	display: flex;
+	position: absolute;
+	width: 745px;
+	top: -35px;
+	padding: 20px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	background-color: orange;
+}
+
+main .comment-detail .comment-search {
+	display: flex;
+	justify-content: space-between;
+	width: 745px;
+}
+
+main .comment-detail .comment-search p {
+	position: relative;
+	top: 7px;
+	color: rgb(144, 144, 144);
+	
+}
+
+main .comment-detail .comment-search .search-input {
+	padding: 3px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .comment-detail table {
+	position: relative;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 99%;
+	margin-top: 15px;
+}
+
+main .comment-detail tr {
+	cursor: pointer;
+}
+
+main .comment-detail th {
+	padding: 3px;
+	text-align: left;
+	border-bottom: 1px solid #000000;
+}
+
+main .comment-detail td {
+	padding: 3px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+
+
+main .comment-detail .comment-pagination p {
+	display: inline-block;
+	position: relative;
+	/* justify-content: space-between; */
+	margin-top: 20px;
+	text-align: left;
+	bottom: 0;
+	right: 0; 
+}
+
+main .comment-detail .comment-pagination .messages-links {
+	color: black;
+	display: inline;
+	float: right;
+	margin-top: 20px;
+	/* padding: 4px 8px; */
+	text-decoration: none;
+}
+
+main .chat-box {
+	width: 100%;
+	max-height: 360px;
+	overflow-y: auto;
+	scrollbar-width: none;
+}
+main .chat-box::-webkit-scrollbar {
+	display: none;
+}
+main .chat-box .day {
+	text-align: center;
+	margin-bottom: 10px;
+}
+main .chat-box .day span {
+	display: inline-block;
+	padding: 6px 12px;
+	border-radius: 20px;
+	background: var(--light-blue);
+	color: var(--blue);
+	font-size: 12px;
+	font-weight: 600;
+}
+main .chat-box .msg img {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+main .chat-box .msg {
+	display: flex;
+	grid-gap: 6px;
+	align-items: flex-start;
+}
+main .chat-box .profile .username {
+	font-size: 14px;
+	font-weight: 600;
+	display: inline-block;
+	margin-right: 6px;
+}
+main .chat-box .profile .time {
+	font-size: 12px;
+	color: var(--dark-grey);
+}
+main .chat-box .chat p {
+	font-size: 14px;
+	padding: 6px 10px;
+	display: inline-block;
+	max-width: 400px;
+	line-height: 150%;
+}
+main .chat-box .msg:not(.me) .chat p {
+	border-radius: 0 5px 5px 5px;
+	background: var(--blue);
+	color: var(--light);
+}
+main .chat-box .msg.me {
+	justify-content: flex-end;
+}
+main .chat-box .msg.me .profile {
+	text-align: right;
+}
+main .chat-box .msg.me p {
+	background: var(--grey);
+	border-radius: 5px 0 5px 5px;
+}
+main form {
+	margin-top: 6px;
+}
+main .form-group {
+	width: 100%;
+	display: flex;
+	grid-gap: 10px;
+}
+main .form-group input {
+	flex-grow: 1;
+	padding: 10px 16px;
+	border-radius: 5px;
+	outline: none;
+	background: var(--grey);
+	border: none;
+	transition: all .3s ease;
+	width: 100%;
+}
+main .form-group input:focus {
+	box-shadow: 0 0 0 1px var(--blue), 0 0 0 4px var(--light-blue);
+}
+main .btn-send {
+	padding: 0 16px;
+	background: var(--blue);
+	border-radius: 5px;
+	color: var(--light);
+	cursor: pointer;
+	border: none;
+	transition: all .3s ease;
+}
+main .btn-send:hover {
+	background: var(--dark-blue);
+}
+
+
+/* COMMENT DETAIL END */
+
+
+/* TICKET HISTORY */
+
+main .ticket-history-card {
+	position: relative;
+	/* display: flex; */
+	grid-gap: 20px;
+	margin-top: 40px;
+	/* height: 400px; */
+	flex-wrap: wrap;
+	padding: 0 10px;
+}
+
+main .ticket-history-card .ticket-history-detail {
+	flex-grow: 1;
+	/* flex-basis: 400px; */
+	margin-top: 30px;
+	padding: 20px;
+	/* height: 100%; */
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .ticket-history-detail #ticket-history {
+	/* display: flex; */
+	position: relative;
+	top: -55px;
+	width: 100%;
+	padding: 20px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	background-color: orange;
+}
+
+main .ticket-history-detail .history-search p {
+	position: relative;
+	float: left;
+	color: rgb(144, 144, 144);
+	bottom: 40px;
+}
+
+main .ticket-history-detail .history-search .search-input {
+	position: relative;
+	float: right;
+	padding: 3px;
+	bottom: 40px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .ticket-history-detail table {
+	position: relative;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 99%;
+	height: 100%;
+	top: -20px;
+}
+
+main .ticket-history-detail tr {
+	cursor: pointer;
+}
+
+main .ticket-history-detail th {
+	padding: 3px 6px;
+	text-align: left;
+	border-bottom: 1px solid #000000;
+}
+
+main .ticket-history-detail td {
+	padding: 3px 6px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+main .ticket-history-detail .history-pagination {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+
+
+/* TICKET HISTORY ENDS */
+
+
+/* ATTACHMENT */
+
+
+.column .attachment-form form {
+	display: flex;
+	/* float: right; */
+	margin: 20px;
+	
+}
+
+.column .form-control-file {
+	padding-top: 5px;
+	/* background-color: blue; */
+}
+
+
+
+.column .attachment-form {
+	display: block;
+}
+
+.column .attachment-form .search {
+	width: 70%;
+	height: 20px;
+}
+
+.column .attachment-form .search input {
+	width: 100%;
+	margin-right: 20px;
+	padding: 3px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.column .attachment-form button {
+	text-align: right;
+	padding: 5px 10px;
+	margin-left: 20px;
+	background-color: rgb(0, 162, 255);
+	color: white;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .attachment-card {
+	display: relative;
+	/* top: 20px; */
+	grid-gap: 20px;
+	margin-top: 20px;
+	flex-wrap: wrap;
+	padding: 0 10px;
+}
+
+main .attachment-card .attachment-detail {
+	flex-grow: 1;
+	position: relative;
+	top: 40px;
+	padding: 20px;
+	height: 100%;
+	width: 100%;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .attachment-detail #attachment-head {
+	display: flex;
+	position: absolute;
+	width: 745px;
+	top: -35px;
+	padding: 20px;
+	border-radius: 3px;
+	background-color: orange;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .attachment-detail .attachment-search {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+	width: 745px;
+}
+
+main .attachment-detail .attachment-search p {
+	position: relative;
+	top: 7px;
+	color: rgb(144, 144, 144);
+}
+
+main .attachment-detail .attachment-search .search-input {
+	padding: 3px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+
+main .attachment-detail table {
+	position: relative;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 99%;
+	margin-top: 15px;
+}
+
+main .attachment-detail tr {
+	cursor: pointer;
+}
+
+main .attachment-detail th {
+	padding: 3px;
+	text-align: left;
+	border-bottom: 1px solid #000000;
+}
+
+main .attachment-detail td {
+	padding: 3px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+main .attachment-detail .attachment-pagination {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+
+
+/* ATTACHMENT END */

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/manage.css' %}" />
+{% endblock htmlhead %}
+
+{% block content %}
+<main id="content">
+  {% if user.account_type == 'admin' %}
+
+    <h1 class="title">Manage Project Users</h1>
+    Select 1 or more Users
+    
+    <form method="POST">
+      {% csrf_token %}
+      <div class="manage-border">
+        
+        <select name="assigned_users" id="assignee">
+          <option value="none">None</option>
+          {% for user in users %}
+          <option value="{{ user.id }}">{{ user.username }}</option>
+          {% endfor %}
+        </select>
+        
+      </div>
+      <div class="assign">
+        <br> Select Project to assign <br>
+        <select name="project" id="ticket">
+          {% for project in projects %}
+            <option value="{{ project.id }}">{{ project.name }}</option>
+          {% endfor %}
+        </select>
+        <button class="btn-assign">Submit</button>
+      </div>
+    </form>
+    
+    <br><br><br><br><br><br><br>
+    <h1 class="title">Manage User Accounts</h1>
+    Select 1 or more Users
+    <form method="POST">
+      {% csrf_token %}
+      <div class="manage-border">
+        
+        <select name="user" id="user">
+          <option value="none">None</option>
+          {% for user in users %}
+          <option value="{{ user.id }}">{{ user.username }}</option>
+          {% endfor %}
+        </select>
+        
+      </div>
+      <div class="assign3">
+        <br> Select Account Type to change <br>
+        <select name="account_type" id="account_type">
+          {% for choice in account_type_choices %}
+            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+          {% endfor %}
+        </select>
+        <button class="btn-assign">Submit</button>
+      </div>
+    </form>
+
+  {% endif %}
+
+  {% if user.account_type == 'project_manager' %}
+  <h1 class="title2">Manage Ticket Users</h1>
+  <p class="select">Select 1 or more Users</p>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="manage-border2">
+      
+      <select name="assignee" id="assignee2">
+        <option value="none">None</option>
+        {% for user in users %}
+        <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="assign2">
+      <br> Select Ticket to assign <br>
+      <select name="ticket" id="ticket2">
+        {% for ticket in tickets %}
+          <option value="{{ ticket.id }}">{{ ticket.name }}</option>
+        {% endfor %}
+      </select>
+      <button class="btn-assign">Submit</button>
+    </div>
+  </form>
+  {% endif %}
+
+  <div class="all-users-card">
+    <div class="all-users-detail">
+      <h3 id="all-users">All Users</h3>
+      <div class="history-search">
+        <p>Show # Entries</p>
+        <form action="">
+          <input type="text" name="search" class="search-input" placeholder="Search" value="">
+        </form>
+        
+      </div>
+      <table>
+        <thead>
+          <tr>
+          <th>User Name</th>
+          <th>Email</th>
+          <th></th>
+          <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td></td>
+            <td>{{user.get_account_type_display}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      <div class="history-pagination">
+        <p>Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }} entries</p>
+        <div class="history-links">
+        {% if page_obj.has_previous %}
+        
+          <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+        {% else %}
+          
+        {% endif %}
+
+        {% for page in page_obj.paginator.page_range %}
+          {% if page_obj.number == page %}
+            <a href="#" class="active">{{ page }}</a>
+          {% else %}
+            <a href="?page={{ page }}">{{ page }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+        {% else %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

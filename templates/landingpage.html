@@ -1,0 +1,549 @@
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/landing.css' %}" />
+{% endblock htmlhead %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MABLE - Bring your business ideas to life</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">MABLE</a>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list container">
+
+          <li>
+            <a href="#home" class="navbar-link active" data-nav-link>Home</a>
+          </li>
+
+          <li>
+            <a href="#features" class="navbar-link" data-nav-link>Features</a>
+          </li>
+
+          <li>
+            <a href="#about" class="navbar-link" data-nav-link>About</a>
+          </li>
+          <li>
+            <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+          </li>
+
+          <li>
+            <a href="{% url 'account-type' %}" class="btn btn-primary">Get Started</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <button class="nav-toggle-btn" aria-label="toggle manu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero" aria-label="hero" id="home">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <p class="section-subtitle"></p>
+
+            <h1 class="h1 hero-title">Bring Your Business Ideas to Life with Mable</h1>
+
+            <p class="section-text">
+              The top-tier web-based bug tracking application that streamlines your workflow and boosts team productivity. 
+              With our fully-featured application, 
+              you can now manage your projects with ease, and resolve issues in no time.
+            </p>
+
+            <ul class="btn-list">
+
+              <!-- <li>
+                <a href="#" class="btn-item-link" aria-label="Download from app store">
+                  <img src="../static/images/app-store.png" width="185" height="69" alt="app store" class="img">
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="btn-item-link" aria-label="Download from play store">
+                  <img src="../static/images/play-store.png" width="185" height="69" alt="play store" class="img">
+                </a>
+              </li> -->
+
+            </ul>
+
+          </div>
+
+          <figure class="hero-banner">
+            <img src="../static/images/mable-projects.png" width="769" height="804" alt="hero banner" class="w-100">
+          </figure>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #FEATURES
+      -->
+
+      <section class="section features" id="features" aria-label="features">
+        <div class="container">
+
+          <p class="section-subtitle">Our App Feature</p>
+
+          <h2 class="h2 section-title">Awesome Features</h2>
+
+          <ul class="features-list">
+
+            <li class="features-item">
+              <div class="features-card">
+
+                <div class="card-icon">
+                  <ion-icon name="settings-outline" aria-hidden="true"></ion-icon>
+                  
+                </div>
+
+                <h3 class="h3 card-title">Manage Users</h3>
+
+                <p class="card-text">
+                  Manage roles for increased productivity
+                </p>
+
+              </div>
+            </li>
+
+            <li class="features-item">
+              <div class="features-card">
+
+                <div class="card-icon">
+                  <ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h3 card-title">CRUD</h3>
+
+                <p class="card-text">
+                  Users create, view, modify, and delete records, making it easy to manage tasks, issues, and other project-related data.
+                </p>
+
+              </div>
+            </li>
+
+            <li class="features-item">
+              <div class="features-card">
+
+                <div class="card-icon">
+                  <ion-icon name="create-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h3 card-title">Comment</h3>
+
+                <p class="card-text">
+                  Users comment on tasks, issues, and other records, making it easy for team members to collaborate, share ideas, and discuss solutions.
+                </p>
+
+              </div>
+            </li>
+
+            <li class="features-item">
+              <div class="features-card">
+
+                <div class="card-icon">
+                  <ion-icon name="cube-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h3 card-title">Free Trial</h3>
+
+                <p class="card-text">
+                  Feel free to take a look around and utilize all these features at no cost
+                </p>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #ABOUT
+      -->
+
+      <section class="section about" id="about" aria-label="about">
+        <div class="container">
+
+          <figure class="about-banner">
+            <img src="../static/images/mable-second.png" width="1262" height="1357" loading="lazy" alt="about banner"
+              class="w-100">
+          </figure>
+
+          <div class="about-content">
+
+            <p class="section-subtitle">About Us</p>
+
+            <h2 class="h2 section-title">We Are Trusted By Thousands Of People</h2>
+
+            <p class="section-text">
+              Mable Bug Tracker is a full-stack web application that simplifies the process of tracking and managing issues, tasks, and projects.
+              The application was developed using HTML, CSS, JavaScript, and Django, and offers a range of powerful features to help teams manage their projects efficiently, 
+              collaborate effectively, and stay up-to-date on issue resolution and task progress.
+            </p>
+
+            <ul class="about-list">
+
+              <li class="about-item">
+
+                <div class="item-icon">
+                  <ion-icon name="folder" aria-hidden="true"></ion-icon>
+                </div>
+
+                <div>
+                  <h3 class="h3 item-title">Quality Design</h3>
+
+                  <p class="item-text">
+                    We started using Mable for our small startup, and we've been blown away by how much it has improved our productivity!
+                  </p>
+                </div>
+
+              </li>
+
+              <li class="about-item">
+
+                <div class="item-icon">
+                  <ion-icon name="pie-chart" aria-hidden="true"></ion-icon>
+                </div>
+
+                <div>
+                  <h3 class="h3 item-title">Easy to Manage Data</h3>
+
+                  <p class="item-text">
+                    The 30% increase in team efficiency has allowed us to take on more projects than ever before. 
+                    Can't recommend this app enough!
+                  </p>
+                </div>
+
+              </li>
+
+            </ul>
+
+            <a href="{% url 'account-type' %}" class="btn btn-secondary">Discover More</a>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #ABOUT 2
+      -->
+
+      <section class="section about-2" aria-label="about">
+        <div class="container">
+
+          <div class="about-content">
+
+            <p class="section-subtitle">Cool & Amazing Design</p>
+
+            <h2 class="h2 section-title">We Bring Your Ideas To Life</h2>
+
+            <p class="section-text">
+              Mable is more than just a bug tracking application. 
+              It's a complete project management solution that helps you streamline your workflow and improve team productivity.
+              With Mable, you can customize templates to fit your specific needs, and track progress in real-time to ensure that your projects are completed on time and within budget
+            </p>
+
+
+            <a href="{% url 'account-type' %}" class="btn btn-secondary">Discover More</a>
+
+          </div>
+
+          <figure class="about-banner">
+            <img src="../static/images/mable-third.png" width="1146" height="1226" loading="lazy" alt="about banner"
+              class="w-100">
+          </figure>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #APP
+      -->
+
+      <section class="section app" aria-label="app" id="app">
+        <div class="container">
+
+          <figure class="app-banner">
+            <img src="../static/images/mable-fourth.png" width="449" height="608" loading="lazy" alt="app banner" class="w-100">
+          </figure>
+
+          <div class="app-content">
+
+            <p class="section-subtitle">Create Your Account</p>
+
+            <h2 class="h2 section-title">Use The App For Free And Start Now</h2>
+
+            <p class="section-text">
+              Sign up for a free Mable account to get started. All you need is an email address and a password.
+            </p>
+
+            <ul class="btn-list">
+
+
+            </ul>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #BLOG
+      -->
+
+
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer" id="contact">
+
+    <div class="section footer-top">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">MABLE</a>
+
+          <p class="section-text">
+            Thank you for considering Mable Bug Tracker for your project management needs.
+            We're dedicated to providing our users with the best possible experience, and we're always looking for ways to improve our application.
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://github.com/Mdaw11" class="social-link">
+                <ion-icon name="logo-google"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.linkedin.com/in/mikhael-dawili-376049178/" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Company</p>
+          </li>
+
+          <li>
+            <a href="#about" class="footer-link">About Us</a>
+          </li>
+
+          <li>
+            <a href="#contact" class="footer-link">Contact Us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Core Services</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Our Team</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Pricing Plan</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Useful Links</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact Us</a>
+          </li>
+
+          <!-- <li>
+            <a href="#" class="footer-link">Privacy Policy</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">App Download</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">How It Works</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Terms & Conditions</a>
+          </li> -->
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Get In Touch</p>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+
+            <a href="tel:+12023459999" class="item-link">+9727679441</a>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+
+            <a href="mailto:mdaw.pro@gmail.com" class="item-link">mdaw.pro@gmail.com</a>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="map-outline" aria-hidden="true"></ion-icon>
+
+            <address class="item-link address">
+              Houston, Texas<br>
+            </address>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2023 All Rights Reserved by <a href="#" class="copyright-link">Mable</a>.
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="../static/js/landing.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

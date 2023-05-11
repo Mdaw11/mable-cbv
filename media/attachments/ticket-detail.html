@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="style.css">
+	<title>AdminSite</title>
+</head>
+<body>
+    <!-- SIDEBAR -->
+	<aside id="sidebar">
+		<a href="#" class="brand"><i class='bx bxs-smile icon'></i> AdminSite</a>
+		<ul class="side-menu">
+			<li><a href="ticket-detail.html" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li class="divider" data-text="main">Main</li>
+			<li><a href="users.html"><i class='bx bxs-inbox icon' ></i> Elements <i class='bx bx-chevron' ></i></a></li>
+			<li><a href="data.html"><i class='bx bxs-chart icon' ></i> Charts</a></li>
+			<li><a href="ticket.html"><i class='bx bxs-widget icon' ></i> Widgets</a></li>
+			<li class="divider" data-text="table and forms">Table and forms</li>
+			<li><a href="project-detail.html"><i class='bx bx-table icon' ></i> Tables</a></li>
+			<li>
+				<a href="#"><i class='bx bxs-notepad icon' ></i> Forms <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a href="#">Basic</a></li>
+					<li><a href="#">Select</a></li>
+					<li><a href="#">Checkbox</a></li>
+					<li><a href="#">Radio</a></li>
+				</ul>
+			</li>
+		</ul>
+		<div class="ads">
+			<div class="wrapper">
+				<a href="#" class="btn-upgrade">Upgrade</a>
+				<p>Become a <span>PRO</span> member and enjoy <span>All Features</span></p>
+			</div>
+		</div>
+	</aside>
+	<!-- SIDEBAR -->
+
+	<!-- NAVBAR -->
+	<header id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu toggle-sidebar' ></i>
+			<form action="#">
+				<div class="form-group">
+					<input type="text" placeholder="Search...">
+					<i class='bx bx-search icon' ></i>
+				</div>
+			</form>
+			<a href="#" class="nav-link">
+				<i class='bx bxs-bell icon' ></i>
+				<span class="badge">5</span>
+			</a>
+			<a href="#" class="nav-link">
+				<i class='bx bxs-message-square-dots icon' ></i>
+				<span class="badge">8</span>
+			</a>
+			<span class="divider"></span>
+			<div class="profile">
+				<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+				<ul class="profile-link">
+					<li><a href="#"><i class='bx bxs-user-circle icon' ></i> Profile</a></li>
+					<li><a href="#"><i class='bx bxs-cog' ></i> Settings</a></li>
+					<li><a href="#"><i class='bx bxs-log-out-circle' ></i> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+	</header>
+	<!-- NAVBAR -->
+
+    <!-- MAIN -->
+	<main id="content">
+		<h1 class="title">Dashboard</h1>
+		<ul class="breadcrumbs">
+			<li><a href="#">Home</a></li>
+			<li class="divider">/</li>
+			<li><a href="#" class="active">Dashboard</a></li>
+		</ul>
+		<div class="info-data">
+		</div>
+		<div class="row">
+			<div class="column">
+				<div class="ticket-card">
+					<div class="ticket-detail">
+						<h3 id="ticket-head">Details for Ticket</h3>
+						<div class="ticket-row">
+							<div class="ticket-column">
+								<h4>Ticket Title</h4>
+								<p>Hello</p>
+							</div>
+							<div class="ticket-column">
+								<h4>Ticket Description</h4>
+								<p>Hello</p>
+							</div>
+						</div>
+						<div class="ticket-row">
+							<div class="ticket-column">
+								<h4>Ticket Title</h4>
+								<p>Hello</p>
+							</div>
+							<div class="ticket-column">
+								<h4>Ticket Description</h4>
+								<p>Hello</p>
+							</div>
+						</div>
+						<div class="ticket-row">
+							<div class="ticket-column">
+								<h4>Ticket Title</h4>
+								<p>Hello</p>
+							</div>
+							<div class="ticket-column">
+								<h4>Ticket Description</h4>
+								<p>Hello</p>
+							</div>
+						</div>
+						<div class="ticket-row">
+							<div class="ticket-column">
+								<h4>Ticket Title</h4>
+								<p>Hello</p>
+							</div>
+							<div class="ticket-column">
+								<h4>Ticket Description</h4>
+								<p>Hello</p>
+							</div>
+						</div>
+						<div class="ticket-row">
+							<div class="ticket-column">
+								<h4>Ticket Title</h4>
+								<p>Hello</p>
+							</div>
+							<div class="ticket-column">
+								<h4>Ticket Description</h4>
+								<p>Hello</p>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="column">
+				Add a Comment?
+				<div class="comment-form">
+					<form action="">
+						<div class="search"><input type="text"></div>
+						<div class="search-button"><button class="btn-comment">Add</button></div>
+					</form>
+				</div>
+				<div class="comment-card">
+					<div class="comment-detail">
+						<h3 id="comment-head">Ticket Comments</h3>
+						<div class="comment-search">
+							<p>Show # Entries</p>
+							<form action="">
+								<input type="text" name="text" class="search-input" placeholder="Search">
+							</form>
+						</div>
+						<table>
+							<thead>
+							  <tr>
+								<th>User Name</th>
+								<th>Description</th>
+								<th>Hello</th>
+								<th>Created</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td><a href="">hello</a></td>
+								<td>hello</td>
+								<td>Hello</td>
+								<td>hello</td>
+								
+							  </tr>
+							  
+							</tbody>
+						</table>
+						<div class="comment-pagination">
+							<p>Showing 1 to 5 of 5 entries </p>
+							<a href="#">1</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<div class="ticket-history-card">
+					<div class="ticket-history-detail">
+						<h3 id="ticket-history">Ticket History</h3>
+						<div class="history-search">
+							<p>Show # Entries</p>
+							<form action="">
+								<input type="text" name="text" class="search-input" placeholder="Search">
+							</form>
+							
+						</div>
+						<table>
+							<thead>
+							  <tr>
+								<th>User Name</th>
+								<th>Description</th>
+								<th>Hello</th>
+								<th>Created</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td><a href="">hello</a></td>
+								<td>hello</td>
+								<td>Hello</td>
+								<td>hello</td>
+								
+							  </tr>
+							  
+							</tbody>
+						</table>
+						<div class="history-pagination">
+							<p>Showing 1 to 5 of 5 entries </p>
+							<a href="#">1</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				Add an Attachment?
+				<div class="comment-form">
+					<form action="">
+						<div class="search"><input type="text"></div>
+						<div class="search-button"><button class="btn-comment">Add</button></div>
+					</form>
+				</div>
+				<div class="comment-card">
+					<div class="comment-detail">
+						<h3 id="comment-head">Ticket Attachments</h3>
+						<div class="comment-search">
+							<p>Show # Entries</p>
+							<form action="">
+								<input type="text" name="text" class="search-input" placeholder="Search">
+							</form>
+						</div>
+						<table>
+							<thead>
+							  <tr>
+								<th>User Name</th>
+								<th>Description</th>
+								<th>Hello</th>
+								<th>Created</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td><a href="">hello</a></td>
+								<td>hello</td>
+								<td>Hello</td>
+								<td>hello</td>
+								
+							  </tr>
+							  
+							</tbody>
+						</table>
+						<div class="comment-pagination">
+							<p>Showing 1 to 5 of 5 entries </p>
+							<a href="#">1</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- MAIN -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script src="script.js"></script>
+</body>
+</html>

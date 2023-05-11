@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/ticket.css' %}" />
+{% endblock htmlhead %}
+{% block content %}
+  
+<main id="content">
+  <!-- <h1 class="title">Dashboard</h1>
+  <ul class="breadcrumbs">
+    <li><a href="#">Home</a></li>
+    <li class="divider">/</li>
+    <li><a href="#" class="active">Dashboard</a></li>
+  </ul> -->
+  <div class="info-data">
+  </div>
+  <a href="{% url 'update-ticket' ticket.id %}" class="button primary edit">Edit</a>
+  <div class="row">
+    <div class="column">
+      <div class="ticket-card">
+        <div class="ticket-detail">
+          <h3 id="ticket-head">Details for Ticket</h3>
+          <div class="menu">
+						<i class='bx bx-dots-horizontal-rounded icon'></i>
+						<ul class="menu-link">
+							<li><a href="{% url 'update-ticket' ticket.id %}">Edit</a></li>
+							<li><a href="{% url 'delete-ticket' ticket.id %}">Remove</a></li>
+						</ul>
+					</div>
+          <div class="ticket-row">
+            <div class="ticket-column">
+              <h4>Ticket Title</h4>
+              <p>{{ticket.name}}</p>
+            </div>
+            <div class="ticket-column">
+              <h4>Ticket Description</h4>
+              <p>{{ticket.description|safe}}</p>
+            </div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-column">
+              <h4>Assigned Developer </h4>
+              {% for user in ticket.assignee.all %}
+                <p>{{user.username}}</p>
+              {% endfor %}
+            </div>
+            <div class="ticket-column">
+              <h4>Submitter</h4>
+              <p>{{ticket.host}}</p>
+            </div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-column">
+              <h4>Project</h4>
+              <p>Hello</p>
+            </div>
+            <div class="ticket-column">
+              <h4>Ticket Priority</h4>
+              <p class="{{ticket.priority|lower}}">{{ticket.priority}}</p>
+            </div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-column">
+              <h4>Ticket Status</h4>
+              <p class="{{ticket.status|lower}}">{{ ticket.status }}</p>
+            </div>
+            <div class="ticket-column">
+              <h4>Ticket Type</h4>
+              <p class="{{ticket.type|lower}}">{{ ticket.type }}</p>
+            </div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-column">
+              <h4>Created</h4>
+              <p>{{ ticket.created }}</p>
+            </div>
+            <div class="ticket-column">
+              <h4>Updated</h4>
+              <p>{{ ticket.updated }}</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="column">
+      Add a Comment?
+      <div class="comment-form">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="search"><input name="body" placeholder="Add"></div>
+          <div class="search-button"><button type="submit" class="btn-comment">Add</button></div>
+        </form>
+      </div>
+      <div class="comment-card">
+        <div class="comment-detail">
+          <h3 id="comment-head">Ticket Comments</h3>
+          <div class="comment-search">
+            <p>Show # Entries</p>
+            <form action="">
+              <input type="text" name="q" class="search-input" placeholder="Search">
+            </form>
+          </div>
+          <table>
+            <thead>
+              <tr>
+              <th>User</th>
+              <th>Comment</th>
+              <th></th>
+              <th>Created</th>
+              </tr>
+            </thead>
+            {% for message in ticket_messages %}
+            <tbody>
+              <tr>
+              <td>{{message.user.username}}</td>
+              <td>{{message.body}}</td>
+              <td></td>
+              <td>{{message.created}}</td>
+              
+              </tr>
+              
+            </tbody>
+            {% endfor %}
+          </table>
+          <div class="comment-pagination">
+            <p>Showing {{ ticket_messages.start_index }} to {{ ticket_messages.end_index }} of {{ ticket_messages.paginator.count }} entries</p>
+            <div class="messages-links">
+              {% if ticket_messages.has_previous %}
+              <a href="?messages_page={{ ticket_messages.previous_page_number }}">&laquo;</a>
+              {% endif %}
+              {% for num in ticket_messages.paginator.page_range %}
+              {% if ticket_messages.number == num %}
+              <span>{{ num }}</span>
+              {% elif num > ticket_messages.number|add:'-3' and num < ticket_messages.number|add:'3' %}
+              <a href="?messages_page={{ num }}">{{ num }}</a>
+              {% endif %}
+              {% endfor %}
+              {% if ticket_messages.has_next %}
+              <a href="?messages_page={{ ticket_messages.next_page_number }}">&raquo;</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <div class="ticket-history-card">
+        <div class="ticket-history-detail">
+          <h3 id="ticket-history">Ticket History</h3>
+          <div class="history-search">
+            <p>Show # Entries</p>
+            <form action="">
+              <input type="text" name="q" class="search-input" placeholder="Search">
+            </form>
+            
+          </div>
+          <table>
+            <thead>
+              <tr>
+              <th>Ticket Name</th>
+              <th>Updated By</th>
+              <th>Prev. Description</th>
+              <th>Updated</th>
+              </tr>
+            </thead>
+            {% for history in ticket_history %}
+              <tbody>
+                <tr>
+                <td><a href="">{{ history.name }}</a></td>
+                <td>{{ history.updated_by }}</td>
+                <td>{{ history.description|safe }}</td>
+                <td>{{ history.created|date:"F j, Y, g:i a" }}</td>
+                
+                </tr>
+                
+              </tbody>
+            {% endfor %}
+          </table>
+          <div class="history-pagination">
+            <p>Showing {{ ticket_history.start_index }} to {{ ticket_history.end_index }} of {{ ticket_history.paginator.count }} entries</p>
+            <div class="history-links">
+              {% if ticket_history.has_previous %}
+                <a href="?history_page={{ ticket_history.previous_page_number }}">>&laquo;</a>
+              {% endif %}
+              {% for num in ticket_history.paginator.page_range %}
+                {% if ticket_history.number == num %}
+                  <span>{{ num }}</span>
+                {% elif num > ticket_history.number|add:'-3' and num < ticket_history.number|add:'3' %}
+                  <a href="?history_page={{ num }}">{{ num }}</a>
+                {% endif %}
+              {% endfor %}
+              {% if ticket_history.has_next %}
+                <a href="?history_page={{ ticket_history.next_page_number }}">&raquo;</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      Add an Attachment?
+      <div class="attachment-form">
+        <form method="POST" enctype="multipart/form-data" action="{% url 'ticket' pk=ticket.id %}">
+          {% csrf_token %}
+          <!-- <div class=""> -->
+            <label for="files"></label>
+            <input type="file" class="form-control-file" id="files" name="files" multiple>
+          <!-- </div> -->
+          <div class="search"></div>
+          <!-- <div class="search"><input type="text"></div> -->
+          <div class="search-button"><button type="submit" class="btn-attachment">Add</button></div>
+        </form>
+      </div>
+      <div class="attachment-card">
+        <div class="attachment-detail">
+          <h3 id="attachment-head">Ticket Attachments</h3>
+          <div class="attachment-search">
+            <p>Show # Entries</p>
+            <form action="">
+              <input type="text" name="q" class="search-input" placeholder="Search">
+            </form>
+          </div>
+          <table>
+            <thead>
+              <tr>
+              <th>Attachments</th>
+              <th></th>
+              <th>Created</th>
+              <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for attachment in ticket_attachments %}
+              <tr>
+                <td>
+                  {% if attachment.file %}
+                    <a href="{{ attachment.file.url }}">{{ attachment.file.name }}</a>
+                  {% else %}
+                    No file available
+                  {% endif %}
+                </td>
+              <td></td>
+              <td>{{ attachment.created }}</td>
+              <td></td>
+              
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="attachment-pagination">
+            <p>Showing {{ ticket_attachments.start_index }} to {{ ticket_attachments.end_index }} of {{ ticket_attachments.paginator.count }} entries</p>
+              <div class="messages-links">
+              {% if ticket_attachments.has_previous %}
+              <a href="?attachments_page={{ ticket_attachments.previous_page_number }}">&laquo;</a>
+              {% endif %}
+              {% for num in ticket_attachments.paginator.page_range %}
+              {% if ticket_attachments.number == num %}
+              <span>{{ num }}</span>
+              {% elif num > ticket_attachments.number|add:'-3' and num < ticket_attachments.number|add:'3' %}
+              <a href="?attachments_page={{ num }}">{{ num }}</a>
+              {% endif %}
+              {% endfor %}
+              {% if ticket_attachments.has_next %}
+              <a href="?attachments_page={{ ticket_attachments.next_page_number }}">&raquo;</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}

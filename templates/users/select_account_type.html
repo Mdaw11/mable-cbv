@@ -1,0 +1,39 @@
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+{% endblock htmlhead %}
+
+  <div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+  <div class="container">
+    <div class="login form">
+      <h1>Select Account Type</h1>
+      <p>Please select the account type you would like to create:</p>
+      <div class="form-container">
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-options">
+            {% for account_type in account_type_choices %}
+              <div>
+                <input type="radio" id="{{ account_type.0 }}" name="account_type" value="{{ account_type.0 }}">
+                <label for="{{ account_type.0 }}">{{ account_type.1 }}</label>
+              </div>
+            {% endfor %}
+          </div>
+          <button type="submit">Continue</button>
+        </form>
+        <div class="signup">
+          <span class="signup">Already have an account?
+           <a href="{% url 'login' %}">Login</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  

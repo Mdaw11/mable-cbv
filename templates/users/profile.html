@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
+{% endblock htmlhead %}
+
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main id="content">
+    
+    <div class="profile-row">
+        <div class="profile-column">
+            <div class="profile-content">
+                <h2 id="profile-head">User</h2>
+                <div class="profile-img">
+                    <img src="{{ user.profile.profile_pic.url }}" alt="">
+                    <p>{{ user.username }}</p>
+                    <p id="email">{{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="profile-column">
+            <div class="profile-content">
+                <h2 id="profile-head">Profile Settings</h2>   
+                <div class="form-settings">
+                    <form method="POST" enctype="multipart/form-data" class="box">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="">Profile Info</legend>
+                            {{ u_form|crispy }}
+                            {{ p_form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="profile-column">
+            <div class="profile-content">
+                <h2 id="profile-head">User's Tickets</h2>
+                <div class="user-tickets">
+                    <h3>Created by User:</h3>
+                    <div class="wrapper">
+                        <table>
+                            <thead>
+                            <tr>
+                            <th>Ticket Name</th>
+                            <th></th>
+                            <th>Status</th>
+                            <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% if user_created_tickets %}
+                                    {% for ticket in user_created_tickets %}
+                                    <tr>
+                                    
+                                        <td><a href="{% url 'ticket' ticket.id %}">{{ ticket.name }}</a></td>
+                                        <td></td>
+                                        <td class="{{ticket.status|lower}}">
+                                            {{ticket.status}}</td>
+                                        <td></td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No tickets created by user.</p>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3>Assigned to User:</h3>
+                    <div class="wrapper">
+                        <table>
+                            <thead>
+                            <tr>
+                            <th>Ticket Name</th>
+                            <th></th>
+                            <th>Status</th>
+                            <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% if user_assigned_tickets %}
+                                    {% for ticket in user_assigned_tickets %}
+                                    <tr>
+                                    
+                                        <td><a href="{% url 'ticket' ticket.id %}">{{ ticket.name }}</a></td>
+                                        <td></td>
+                                        <td class="{{ticket.status|lower}}">
+                                            {{ticket.status}}</td>
+                                        <td></td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No tickets created by user.</p>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

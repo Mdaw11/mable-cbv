@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/ticket.css' %}" />
+{% endblock htmlhead %}
+{% block content %}
+<main id="content">
+  <h1 class="title"><a href="#popup1" class="popup-container" role="button">Create New Project</a></h1>
+  
+
+  <div class="info-data">
+  </div>
+  <div class="ticket-home-data">
+    <div class="ticket-home-card">
+        <div class="ticket-home-detail">
+          <div class="ticket-home-head">
+            <h3>Tickets</h3>
+            <div class="ticket-form">
+              <form method="get" action="{% url 'ticket-home' %}">
+                <label for="{{ filter.form.assignee.id_for_label }}">Assignee:</label>
+                
+                {{ filter.form.assignee }}
+
+                <label for="{{ filter.form.type.id_for_label }}">Type:</label>
+                {{ filter.form.type }}
+                
+                <label for="{{ filter.form.status.id_for_label }}">Status:</label>
+                {{ filter.form.status }}
+                
+                <label for="{{ filter.form.priority.id_for_label }}">Priority:</label>
+                {{ filter.form.priority }}
+                
+                
+                
+                <button type="submit">Filter</button>
+              </form>
+            </div>
+          </div>
+          
+          <div class="ticket-home-search">
+            <p>Show # Entries</p>
+            <form action="">
+              <input type="text" name="search" class="search-input" placeholder="Search">
+            </form>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Ticket Name</th>
+                <th>Assignee</th>
+                <!-- <th>Category</th> -->
+                <th>Type</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            {% for ticket in page_obj %}
+            <tbody>
+              <tr>
+              <td><a href="{% url 'ticket' ticket.id %}">{{ticket.name}}</a></td>
+              <td>
+              {% for assignee in ticket.assignee.all %}
+                <img src="{{ assignee.profile.profile_pic.url }}" alt="">
+              {% endfor %}
+              </td>
+              <!-- <td style="color: rgb(0, 153, 145);">{{ticket.category}}</td> -->
+              <td class="{{ticket.type|lower}}">{{ticket.type}}</td>
+              <td class="{{ticket.status|lower}}">
+                  {{ticket.status}}</td>
+              <td class="{{ticket.priority|lower}}">{{ticket.priority}}</td>
+              <td>{{ticket.created|date:"F d, Y"}}</td>
+              
+              </tr>
+              
+            </tbody>
+            {% endfor %}
+          </table>
+          <div class="ticket-home-pagination">
+            <p>Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }} entries</p>
+            <div class="messages-links">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+              {% else %}
+                
+              {% endif %}
+  
+              {% for page in page_obj.paginator.page_range %}
+                {% if page_obj.number == page %}
+                  <a href="#" class="active">{{ page }}</a>
+                {% else %}
+                  <a href="?page={{ page }}">{{ page }}</a>
+                {% endif %}
+              {% endfor %}
+  
+              {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+              {% else %}
+                
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</main>
+{% endblock %}

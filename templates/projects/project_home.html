@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/project.css' %}" />
+{% endblock htmlhead %}
+{% block content %}
+
+<main id="content">
+  <h1 class="title"><a href="#popup1" class="popup-container" role="button">Create New Project</a></h1>
+  {% if user.account_type == 'admin' or user.account_type == 'project_manager' %}
+  <div class="popup-link">
+    <a href="#popup1">Create New Project</a>
+  </div>
+  {% endif %}
+  <div id="popup1" class="popup-container">
+    <div class="popup-content">
+      <a href="#" class="close">&times;</a>
+      <h3></h3>
+      <div class="main-column">
+        <form id="project-form" action="{% url 'project-home' %}" method="POST">
+          {% csrf_token %}
+          <div class="form__group">
+            <span style="white-space: pre-line"><label for="project_name">Project Name</label>
+              {{form.name}}</span>
+          </div>
+          <div class="form__group">
+            <span class="style" style="white-space: pre-line"><label for="project_status">Project Status</label>
+              {{form.status}}</span>
+          </div>
+          <div class="form__group">
+            <span style="white-space: pre-line"><label for="project_description">Project Description</label>
+              {{form.description}}</span>
+          </div>
+          <div class="project-submit">
+            <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+            <button class="btn btn--main" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-data">
+  </div>
+  <div class="project-home-data">
+    <div class="project-card">
+        <div class="project-detail">
+          <h3 id="project-head">Projects</h3>
+          <div class="project-search">
+            <p>Show # Entries</p>
+            <form action="">
+              <input type="text" name="search" class="search-input" placeholder="Search">
+            </form>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Project Name</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Updated</th>
+              </tr>
+            </thead>
+            {% for project in page_obj %}
+            <tbody>
+              <tr>
+                <td><a href="{% url 'project' project.id %}">{{project.name}}</a></td>
+                <td>{{ project.description }}</td>
+                <td class="{{project.status|lower}}">{{ project.status }}</td>
+                <td>{{ project.created|date:"F d, Y" }}</td>
+                <td>{{ project.updated }}</td>
+                
+              </tr>
+              
+            </tbody>
+            {% endfor %}
+          </table>
+          <div class="project-pagination">
+            <p>Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }} entries</p>
+            <div class="messages-links">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+              {% else %}
+                
+              {% endif %}
+  
+              {% for page in page_obj.paginator.page_range %}
+                {% if page_obj.number == page %}
+                  <a href="#" class="active">{{ page }}</a>
+                {% else %}
+                  <a href="?page={{ page }}">{{ page }}</a>
+                {% endif %}
+              {% endfor %}
+  
+              {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+              {% else %}
+                
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</main>
+<script>
+// Get the form and the submit button
+const form = document.querySelector('#project-form');
+const submitBtn = form.querySelector('button[type="submit"]');
+
+// Add event listener to submit button
+submitBtn.addEventListener('click', (event) => {
+  // Prevent default form submission behavior
+  event.preventDefault();
+
+  // Send an AJAX request to submit the form data
+  const formData = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Update the UI as needed
+      alert('Project created successfully!');
+      location.reload();
+    } else {
+      // Handle errors
+      alert('Error creating project.');
+      console.log(data.errors);
+    }
+  })
+  .catch(error => {
+    alert('An error occurred while submitting the form.');
+    console.log(error);
+  });
+});
+  </script>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block htmlhead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/project.css' %}" />
+{% endblock htmlhead %}
+{% block content %}
+<section id="content">
+  <main>
+    <div class="data2">
+      <div class="content-data">
+        <!-- second example -->
+        <div class="column-layout">
+          <div class="main-column2">
+            <form action="" method="POST">
+              {% csrf_token %}
+              
+              <div class="form-project">
+                <span style="white-space: pre-line"><label for="ticket_name">Project</label>
+                  {{form.project}}</span>
+              </div>
+              
+              <div class="form-status">
+                <span class="style" style="white-space: pre-line"><label for="ticket_status">Ticket Status</label>
+                  {{form.status}}</span>
+              </div>
+              <div class="form-priority">
+                <span style="white-space: pre-line"><label for="ticket_priority">Ticket Priorities</label>
+                  {{form.priority}}</span>
+              </div>
+              <div class="form-type">
+                <span style="white-space: pre-line"><label for="ticket_type">Ticket Type</label>
+                  {{form.type}}</span>
+              </div>
+              <div class="form-assignees">
+                <span style="white-space: pre-line">
+                  <label for="ticket_assignee">Assigned To</label>
+                    <select name="assignees" multiple>
+                      {% for user in users %}
+                      {% if user.id in assignee_ids %}
+                      <option value="{{ user.id }}" selected>{{ user.username }}</option>
+                        {% else %}
+                      <option value="{{ user.id }}">{{ user.username }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                </span>
+              </div>
+              <div class="form-name">
+                <span style="white-space: pre-line"><label for="ticket_name">Ticket Name</label>
+                  {{form.name}}</span>
+              </div>
+              <div class="form-description">
+                <span style="white-space: pre-line"><label for="ticket_description">Ticket Description</label>
+                  {{form.description}}</span>
+              </div>
+              <div class="ticket-submit">
+                <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+                <button class="btn btn--main" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+          <br><br><br>
+          <a href="{% url 'delete-ticket' ticket.id %}" class="button primary delete">Delete</a>
+        </div>
+      </div>
+    </div>
+  <main>
+</section>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% endblock content %}

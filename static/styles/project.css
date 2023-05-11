@@ -1,0 +1,866 @@
+/* PROJECT HOME */
+
+/* =========== PROJECT FORM ============= */
+.popup-container {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.3);
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 17, 17, 0.61);
+    display: flex;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fefefe;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+.popup-content p {
+    font-size: 17px;
+    padding: 10px;
+    line-height: 20px;
+}
+
+.popup-content a.close{
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-decoration:none;
+}
+
+.popup-content a.close:hover{
+  color:#333;
+}
+
+.popup-content span:hover,
+.popup-content span:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-container:target{
+	visibility: visible;
+	opacity: 1;
+	transform: scale(1);
+}
+
+.popup-container h3{
+  	margin: 10px;	
+}
+
+.popup-link {
+	background-color: rgb(28, 172, 255);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	width: 23%;
+	padding: 6px;
+	text-align: center;
+}
+
+/* project form styling */
+.form-project {
+	width: 150px;
+	margin: 10px;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	font-size: 16px;
+	padding: 6px;
+}
+
+.form-project select {
+	width: 100%;
+	height: 2.5em;
+	margin: 0;
+	padding: 0.5em 3.5em 0.5em 1em;
+	border: 1px solid #ccc;
+	border-radius: var(--card-border-radius);
+	background-color: var(--light);
+	background-image: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	font-size: 16px;
+	font-family: inherit;
+	color: var(--text-color);
+}
+  
+.form-project select:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--accent-color);
+}
+  
+.form-project select option {
+	color: var(--text-color);
+	background-color: var(--light);
+}
+
+/* project form styling end */
+
+/* name form styling */
+
+.form-name {
+	width: 250px;
+	margin: 10px;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	font-size: 16px;
+	padding: 6px;
+}
+
+.custom-input {
+    /* Add your custom styles here */
+	width: 95%;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    padding: 10px;
+    font-size: 16px;
+    /* ... */
+}
+
+/* name form styling end */
+
+
+.form-assignees {
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	box-sizing: border-box;
+	font-size: 16px;
+	padding: 6px;
+	resize: vertical;
+}
+
+.form-assignees select {
+	width: 100%;
+	height: 2.5em;
+	margin: 0;
+	padding: 0.5em 3.5em 0.5em 1em;
+	border: 1px solid #ccc;
+	border-radius: var(--card-border-radius);
+	background-color: var(--light);
+	background-image: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	font-size: 16px;
+	font-family: inherit;
+	color: var(--text-color);
+}
+  
+.form-assignees select:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--accent-color);
+}
+  
+.form-assignees select option {
+	color: var(--text-color);
+	background-color: var(--light);
+}
+
+/* status form styling */
+
+.form-status {
+	width: 150px;
+	margin: 10px;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	font-size: 16px;
+	padding: 6px;
+}
+
+
+.form-status select {
+	width: 100%;
+	height: 2.5em;
+	margin: 0;
+	padding: 0.5em 3.5em 0.5em 1em;
+	border: 1px solid #ccc;
+	border-radius: var(--card-border-radius);
+	background-color: var(--light);
+	background-image: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	font-size: 16px;
+	font-family: inherit;
+	color: var(--text-color);
+}
+  
+.form-status select:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--accent-color);
+}
+  
+.form-status select option {
+	color: var(--text-color);
+	background-color: var(--light);
+}
+
+/* status form styling end */
+
+
+/* priority form styling  */
+
+.form-priority {
+	width: 150px;
+	margin: 10px;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	font-size: 16px;
+	padding: 6px;
+}
+
+.form-priority select {
+	width: 100%;
+	height: 2.5em;
+	margin: 0;
+	padding: 0.5em 3.5em 0.5em 1em;
+	border: 1px solid #ccc;
+	border-radius: var(--card-border-radius);
+	background-color: var(--light);
+	background-image: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	font-size: 16px;
+	font-family: inherit;
+	color: var(--text-color);
+}
+  
+.form-priority select:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--accent-color);
+}
+  
+.form-priority select option {
+	color: var(--text-color);
+	background-color: var(--light);
+}
+
+/* priority form styling end */
+
+
+/* type form styling */
+
+.form-type {
+	width: 160px;
+	margin: 10px;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	font-size: 16px;
+	padding: 6px;
+}
+
+.form-type select {
+	width: 100%;
+	height: 2.5em;
+	margin: 0;
+	padding: 0.5em 3.5em 0.5em 1em;
+	border: 1px solid #ccc;
+	border-radius: var(--card-border-radius);
+	background-color: var(--light);
+	background-image: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	font-size: 16px;
+	font-family: inherit;
+	color: var(--text-color);
+}
+  
+.form-type select:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--accent-color);
+}
+  
+.form-type select option {
+	color: var(--text-color);
+	background-color: var(--light);
+}
+
+/* type form styling end  */
+
+.form-control {
+	border: 1px solid #ccc;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	box-sizing: border-box;
+	font-size: 16px;
+	padding: 12px;
+	resize: vertical;
+}
+
+.form-project,
+.form-status,
+.form-assignees,
+.form-priority,
+.form-type {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ticket-submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.ticket-submit .btn {
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ticket-submit .btn--dark {
+    background-color: #808080;
+	
+}
+
+.ticket-submit .btn--dark:hover {
+    background-color: #606060;
+}
+
+.ticket-submit .btn--main {
+    background-color: #ff9900;
+}
+
+.ticket-submit .btn--main:hover {
+    background-color: #dd421b;
+}
+
+.project-submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.project-submit .btn {
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-submit .btn--dark {
+    background-color: #808080;
+	
+}
+
+.project-submit .btn--dark:hover {
+    background-color: #606060;
+}
+
+.project-submit .btn--main {
+    background-color: #ff9900;
+}
+
+.project-submit .btn--main:hover {
+    background-color: #dd421b;
+}
+
+.primary {
+	line-height: 40px;
+	transition: ease-in-out .2s;
+	padding: 0 16px;
+}
+  
+.primary:hover, .condensed:hover, .touch:hover {
+	transform: scale(1.02);
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.20), inset 0 0 0 99999px rgba(0,0,0,0.2);
+}
+
+.button {
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-weight: 400;
+	display: inline-block;
+	color: #FFF;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+	transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	text-shadow: -1px -1px 0px rgba(0,0,0,0.4);
+}
+
+.delete {
+	background: rgb(185, 16, 16);
+	
+	&:before {
+	  content: "\f1f8";
+	}
+}
+  
+.inlineIcon.delete:before {
+	  color: rgb(185, 16, 16);
+}
+
+/* ========= PROJECT FORM END ========== */
+
+main .project-card {
+	display: relative;
+	top: 20px;
+	grid-gap: 20px;
+	margin-top: 20px;
+	flex-wrap: wrap;
+	padding: 0 10px;
+	
+}
+
+main .project-card .project-detail {
+	flex-grow: 1;
+	position: relative;
+	top: 40px;
+	padding: 20px;
+	height: 100%;
+	width: 100%;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .project-detail #project-head {
+	display: flex;
+	position: absolute;
+	width: 97%;
+	top: -35px;
+	padding: 20px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+	background-color: orange;
+}
+
+main .project-detail .project-search {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+main .project-detail .project-search p {
+	position: relative;
+	top: 10px;
+	color: rgb(144, 144, 144);
+	
+}
+
+main .project-detail .project-search .search-input {
+	position: relative;
+	top: 10px;
+	padding: 5px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .project-detail table {
+	position: relative;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 99%;
+	margin-top: 15px;
+}
+
+main .project-detail tr {
+	cursor: pointer;
+}
+
+main .project-detail th {
+	color: rgb(28, 134, 255);
+	padding: 20px;
+	text-align: left;
+	border-bottom: 1px solid #000000;
+}
+
+main .project-detail td {
+	padding: 20px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+
+
+main .project-detail .project-pagination p {
+	display: inline-block;
+	position: relative;
+	/* justify-content: space-between; */
+	margin-top: 20px;
+	text-align: left;
+	bottom: 0;
+	right: 0; 
+}
+
+main .project-detail .project-pagination .messages-links {
+	color: black;
+	display: inline;
+	float: right;
+	margin-top: 20px;
+	/* padding: 4px 8px; */
+	text-decoration: none;
+}
+
+.none{
+    color: rgb(156, 156, 156);
+}
+
+.in-progress {
+    color: green;
+}
+
+.under-review {
+    color: orange;
+}
+
+.done {
+    color: rgb(0, 89, 255);
+}
+
+.low {
+	color: green;
+}
+
+.medium {
+	color: orange;
+}
+
+.high {
+	color: red;
+}
+/* PROJECT HOME END */
+
+
+
+
+
+
+/* PROJECT DETAIL */
+/* main .project-detail {
+	position: relative;
+	height: relative;
+} */
+
+main .project-detail .project-detail-data {
+	position: relative;
+	flex-grow: 1;
+	flex-basis: 400px;
+	padding: 20px;
+	top: 40px;
+	height: 100%;
+	background: var(--light);
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+main .project-detail-data #project-head {
+	display: flex;
+	position: relative;
+	width: 99%;
+	padding: 20px;
+	top: -50px;
+	border-radius: 3px;
+	background-color: orange;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+
+main .project-detail-data .menu {
+	position: relative;
+	display: flex;
+	justify-content: right;
+	bottom: 23px;
+	right: 20px;
+	align-items: center;
+}
+
+main .project-detail-data .menu .icon {
+	cursor: pointer;
+}
+
+main .project-detail-data .menu-link {
+	position: absolute;
+	top: calc(100% + 10px);
+	right: 0;
+	width: 140px;
+	background: var(--light);
+	border-radius: 10px;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+	padding: 10px 0;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+	transition: all .3s ease;
+}
+
+main .project-detail-data .menu-link.show {
+	top: 100%;
+	opacity: 1;
+	pointer-events: visible;
+}
+
+main .project-detail-data .menu-link a {
+	display: block;
+	padding: 6px 16px;
+	font-size: 14px;
+	color: var(--dark);
+	transition: all .3s ease;
+}
+
+main .project-detail-data .menu-link a:hover {
+	background: var(--grey);
+}
+
+.primary {
+	line-height: 40px;
+	transition: ease-in-out .2s;
+	padding: 0 16px;
+}
+  
+.primary:hover, .condensed:hover, .touch:hover {
+	transform: scale(1.02);
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.20), inset 0 0 0 99999px rgba(0,0,0,0.2);
+}
+
+
+.parent {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	/* margin-top: 30px; */
+	height: 125px;
+	border: 100px;
+	border-bottom: 1px solid #dbdbdb;
+}
+
+.parent .child {
+	margin-left: 40px;
+}
+.parent .child-description {
+	margin-left: -100px;
+}
+
+.parent .child p {
+	margin: 20px 25px;
+}
+.parent .child-description p {
+	margin: 20px 25px;
+}
+
+.parent2 {
+	display: grid;
+	position: relative;
+	grid-template-columns: 1fr 1fr;
+	margin-top: 70px;
+	height: relative;
+	border: 100px;
+	
+}
+
+.parent2 .child-personnel {
+	margin-right: 300px;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	padding: 20px;
+	border: 1px solid #dbdbdb;
+}
+
+.parent2 .child-personnel h4{
+	background-color: orange;
+	padding: 20px;
+	width: 99%;
+	margin-top: -60px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.parent2 .child-personnel .personnel-search p {
+	position: relative;
+	float: left;
+	top: 10px;
+	color: rgb(144, 144, 144);
+	
+}
+
+.parent2 .child-personnel .personnel-search .search{
+	position: relative;
+	float: right;
+	top: 10px;
+	padding: 3px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.parent2 .child-personnel table {
+	position: relative;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 99%;
+	margin-top: 40px;
+}
+
+.parent2 .child-personnel tr {
+	cursor: pointer;
+}
+
+.parent2 .child-personnel th {
+	padding: 6px 12px;
+	text-align: left;
+	border-bottom: 1px solid #000000;
+}
+
+.parent2 .child-personnel td {
+	padding: 6px 12px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+.parent2 .child-personnel .personnel-pagination {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+.parent2 .child-tickets {
+	border: 1px solid #dbdbdb;
+	margin-left: 30px;
+	padding: 20px;
+}
+
+.parent2 .child-tickets h4{
+	background-color: orange;
+	padding: 20px;
+	margin-top: -60px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.parent2 .child-tickets .ticket-search p{
+	position: relative;
+	top: 10px;
+	float: left;
+	color: rgb(144, 144, 144);
+}
+
+.parent2 .child-tickets .ticket-search .search{
+	position: relative;
+	top: 10px;
+	float: right;
+	padding: 3px;
+	box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+	border-radius: var(--card-border-radius);
+}
+
+.parent2 .child-tickets table {
+	position: relative;
+	table-layout: fixed;
+	border-collapse: collapse;
+	margin-top: 40px;
+	width: 900px;
+}
+
+.parent2 .child-tickets tr {
+	cursor: pointer;
+}
+
+.parent2 .child-tickets th {
+	padding: 6px 12px;
+	text-align: left;
+	border-bottom: 1px solid #000000;
+}
+
+.parent2 .child-tickets td {
+	padding: 6px 12px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+.parent2 .child-tickets .ticket-pagination {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+/* .parent2 .child-tickets .ticket-pagination p {
+	display: inline-block;
+	position: absolute;
+	text-align: left;
+}
+
+.parent2 .child-tickets .ticket-pagination a {
+	color: black;
+	float: right;
+	padding: 8px 16px;
+	text-decoration: none;
+} */
+
+
+.parent2 .child-tickets .ticket-pagination p {
+	display: inline-block;
+	position: relative;
+	/* margin: 30px 25px; */
+	text-align: left;
+	bottom: 0;
+	right: 0; 
+}
+
+.parent2 .child-tickets .ticket-pagination .ticket-pagination-links {
+	color: black;
+	display: inline;
+	float: right;
+	text-decoration: none;
+}
+
+
+/* PROJECT DETAIL END */
