@@ -159,7 +159,7 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://mabler.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://mabler.up.railway.app']
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
